@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2N316gzPWvSV7_59Mjx49idXLH8Sc7S_S0nHhvGjYxhhGjTm8UBnsRB4VGgeuluL0/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_PHY_02 = [
+    {
+        question: "Q. The primary focus of current electricity involves the study of what fundamental aspect of charge?",
+        options: [
+            "Charges at rest within a field",
+            "Charges in a static, localized distribution",
+            "Charges experiencing continuous movement",
+            "Charges interacting gravitationally"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that current electricity is fundamentally the study of charges in motion, distinguishing it from electrostatics which deals with charges at rest."
+    },
+    {
+        question: "Q. What defines one Ampere of electric current?",
+        options: [
+            "The movement of one Coulomb of charge in one second",
+            "The rate of one Volt across a conductor",
+            "The flow of one Joule of energy per second",
+            "The opposition of one Ohm to flow"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states that 1 Ampere is defined as the current when 1 Coulomb of charge flows across any cross-section of a conductor in 1 second."
+    },
+    {
+        question: "Q. If the opposition to charge flow within a conductor remains unchanged while the electromotive push driving the charges is halved, how does the magnitude of the resulting charge flow respond?",
+        options: [
+            "It remains constant",
+            "It also halves",
+            "It doubles",
+            "It quadruples"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that current is directly proportional to voltage when resistance is constant. Therefore, if the voltage (electromotive push) is halved, the current (charge flow) will also halve."
+    },
+    {
+        question: "Q. A conductor is suddenly connected to a power source, and a distant lamp immediately illuminates. This rapid response is primarily due to the quick establishment of which physical phenomenon?",
+        options: [
+            "The swift movement of individual electrons across the entire circuit length.",
+            "The instantaneous increase in the conductor's temperature.",
+            "The sudden decrease in the material's specific resistance.",
+            "The rapid propagation of the electric field throughout the circuit."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that while electrons drift slowly, the electric field that causes them to move propagates at the speed of light, explaining the rapid response of a circuit when power is applied."
+    },
+    {
+        question: "Q. In the widely accepted conventional representation of current, how is its direction typically depicted?",
+        options: [
+            "From the positive terminal to the negative terminal.",
+            "From the negative terminal to the positive terminal.",
+            "Alternating directions rapidly.",
+            "Independent of terminal polarity."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states that conventional current is historically assumed to flow from the positive terminal to the negative terminal."
+    },
+    {
+        question: "Q. Consider a cylindrical wire. If its length is doubled and its cross-sectional area is simultaneously halved, how is its electrical opposition to current flow affected?",
+        options: [
+            "It remains the same.",
+            "It increases by a factor of two.",
+            "It increases by a factor of four.",
+            "It decreases by a factor of four."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that resistance is directly proportional to length and inversely proportional to the area of cross-section. Doubling the length doubles resistance, and halving the area also doubles resistance. Combined, this results in a fourfold increase in resistance."
+    },
+    {
+        question: "Q. A material sample exhibits a very small specific resistance. What can be inferred about its ability to facilitate charge flow and its corresponding measure of conduction?",
+        options: [
+            "It is a poor conductor with low conductivity.",
+            "It is a good conductor with high conductivity.",
+            "It is an insulator with zero conductivity.",
+            "It is a semiconductor with moderate conductivity."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that materials with very small resistivity (specific resistance) are good conductors. Conductivity is the reciprocal of resistivity, so a very small resistivity implies very high conductivity."
+    },
+    {
+        question: "Q. What type of energy conversion defines the operation of a standard battery or cell as an electromotive force source?",
+        options: [
+            "Mechanical energy to electrical energy.",
+            "Heat energy to electrical energy.",
+            "Chemical energy to electrical energy.",
+            "Radiant energy to electrical energy."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that batteries/cells convert chemical energy to electrical energy."
+    },
+    {
+        question: "Q. Electric current, unlike quantities such as force or velocity, is characterized as a scalar quantity. What is the implication of this classification regarding its behavior in circuits?",
+        options: [
+            "Its combination does not follow vector laws of addition.",
+            "Its direction must be explicitly stated to sum it.",
+            "It adheres to vector laws of addition.",
+            "It has magnitude but no discernible direction."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory explicitly states that current is a scalar quantity and does not follow vector laws of addition."
+    },
+    {
+        question: "Q. When a power supply's terminals are connected to an external load, its measured output potential difference is observed to be less than its electromotive force. This reduction in available potential is a direct consequence of what internal characteristic of the supply?",
+        options: [
+            "The external load's inherent resistance.",
+            "The internal opposition to charge flow within the supply itself.",
+            "The specific resistance of the connecting wires.",
+            "The external current's rate of flow."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that in a closed circuit, the terminal voltage is less than the EMF due to a voltage drop across the internal resistance of the supply. This internal opposition leads to the observed reduction."
+    },
+    {
+        question: "Q. For a power source to deliver the greatest possible rate of energy conversion to an external resistive component, how must the characteristic opposition of the external component relate to the inherent opposition within the power source itself?",
+        options: [
+            "The external opposition must be significantly greater than the internal opposition.",
+            "The external opposition must be significantly less than the internal opposition.",
+            "The external opposition must be precisely equal to the internal opposition.",
+            "The external opposition must be entirely independent of the internal opposition."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that maximum power is delivered to the load when the load resistance equals the internal resistance of the source, a principle known as the Maximum Power Transfer Theorem."
+    },
+    {
+        question: "Q. For a material categorized as Ohmic, how does its graph of current versus potential difference appear?",
+        options: [
+            "A curved line bending upwards.",
+            "A straight line passing through the origin.",
+            "A curved line bending downwards.",
+            "A straight line with a negative slope."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that for Ohmic materials, the I-V graph is a straight line passing through the origin."
+    },
+    {
+        question: "Q. An electrical device is rated for a certain power. If this device is then redesigned to operate at the same power but with double the current, how must its internal opposition to flow be adjusted compared to the original design?",
+        options: [
+            "It must increase by a factor of four.",
+            "It must decrease by a factor of two.",
+            "It must decrease by a factor of four.",
+            "It must remain the same."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that power dissipated is related to the square of the current and the resistance. For power to remain constant while the current is doubled, the resistance must decrease by a factor of four to compensate for the squared increase in current (P = I²R implies if P is constant and I becomes 2I, then R must become R/4)."
+    },
+    {
+        question: "Q. Which statement accurately describes the physical meaning of a material's specific resistance?",
+        options: [
+            "The opposition offered by a conductor with infinite length and unit cross-section.",
+            "The opposition offered by a 1-meter length wire of 1-square meter cross-section.",
+            "The total opposition of an entire circuit.",
+            "The inverse of its ability to conduct heat."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that resistivity (specific resistance) is the resistance offered by a 1m length wire of 1m² cross-section."
+    },
+    {
+        question: "Q. What is the SI unit used to quantify a material's ability to permit the flow of electric charge?",
+        options: [
+            "Ohm.",
+            "Ampere.",
+            "Mho.",
+            "Joule."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that conductance is the reciprocal of resistance, and its SI unit is Mho or Siemen."
+    },
+    {
+        question: "Q. A metallic conductor is subjected to a process that significantly elevates its temperature. How would this change inherently affect the material's opposition to electric current flow?",
+        options: [
+            "The opposition would decrease.",
+            "The opposition would remain unchanged.",
+            "The opposition would fluctuate unpredictably.",
+            "The opposition would increase."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that for conductors like metals, resistance increases with an increase in temperature, indicating a positive temperature coefficient of resistance."
+    },
+    {
+        question: "Q. An ideal voltage source is characterized by an internal opposition value that is effectively zero. What implication does this ideal characteristic have on the relationship between its terminal potential difference and its electromotive force, even when a significant external load is connected?",
+        options: [
+            "The terminal potential difference will be significantly less than the electromotive force.",
+            "The terminal potential difference will be exactly equal to the electromotive force.",
+            "The terminal potential difference will be greater than the electromotive force.",
+            "The terminal potential difference will continuously fluctuate, unlike the EMF."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that the terminal voltage V is related to EMF ε and internal resistance r by V = ε - Ir. If the internal resistance (r) is effectively zero, then the term Ir becomes zero, making the terminal potential difference exactly equal to the electromotive force, regardless of the current."
+    },
+    {
+        question: "Q. Which of the following represents a commonly used commercial unit for electrical energy consumption?",
+        options: [
+            "Watt.",
+            "Joule.",
+            "Kilowatt-hour.",
+            "Ampere-second."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that Kilowatt-hour (kWh) is the commercial unit of electrical energy."
+    },
+    {
+        question: "Q. If an electrical heater is connected to a power supply and its operating voltage is doubled while its internal opposition to current flow remains constant, how does the rate at which it converts electrical energy into heat change?",
+        options: [
+            "It quadruples.",
+            "It halves.",
+            "It doubles.",
+            "It remains the same."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states that power is related to the square of the voltage and resistance. If the voltage doubles and resistance stays constant, the power will increase by a factor of two squared, which is four (P = V²/R)."
+    },
+    {
+        question: "Q. A specific material is observed to exhibit an increase in its ability to conduct charge as its temperature rises. What classification best describes this material, and what is the nature of its temperature coefficient of opposition?",
+        options: [
+            "A conductor, possessing a positive temperature coefficient.",
+            "An insulator, possessing a positive temperature coefficient.",
+            "A semiconductor, possessing a negative temperature coefficient.",
+            "An alloy, possessing a negative temperature coefficient."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that resistance decreases with an increase in temperature for semiconductors and insulators, implying an increase in conductivity. This characteristic is associated with a negative temperature coefficient of resistance. Conductors have resistance increasing with temperature (positive coefficient)."
+    },
+    {
+        question: "Q. Who is credited with presenting the fundamental relationship between voltage, current, and resistance in 1826?",
+        options: [
+            "Alessandro Volta.",
+            "Michael Faraday.",
+            "James Watt.",
+            "George Simon Ohm."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory explicitly states that Ohm's Law was presented by German scientist George Simon Ohm in 1826."
+    },
+    {
+        question: "Q. Among the following, which group consists entirely of substances generally considered to be excellent facilitators of electric charge flow?",
+        options: [
+            "Glass, Rubber, Plastic.",
+            "Copper, Zinc, Silver.",
+            "Silicon, Germanium, Carbon.",
+            "Wood, Air, Ceramic."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory lists Copper, Zinc, Silver, and Aluminum as good conductors."
+    },
+    {
+        question: "Q. If the opposition to charge flow in a circuit component is reduced, how does its capacity to permit current flow change?",
+        options: [
+            "Its capacity to permit flow also reduces.",
+            "Its capacity to permit flow becomes zero.",
+            "Its capacity to permit flow remains unchanged.",
+            "Its capacity to permit flow increases."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that conductance is the reciprocal of resistance. Therefore, if resistance (opposition to flow) is reduced, conductance (capacity to permit flow) increases."
+    },
+    {
+        question: "Q. An electromotive force source performs a specific amount of work to move a certain quantity of charge through a complete circuit. If the amount of charge moved is doubled, while the electromotive force remains constant, how does the work done by the source change?",
+        options: [
+            "It remains the same.",
+            "It is halved.",
+            "It is doubled.",
+            "It is quadrupled."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that EMF is defined as the work done per unit charge (ε = W/q). Therefore, work done (W) is the product of EMF and charge (W = εq). If the charge (q) is doubled while the EMF (ε) is constant, the work done (W) will also double."
+    },
+    {
+        question: "Q. In a metallic conductor, what is the actual direction of the flow of free electrons relative to the circuit's terminals?",
+        options: [
+            "From the positive terminal to the negative terminal.",
+            "From the negative terminal to the positive terminal.",
+            "Randomly in all directions.",
+            "Towards the center of the conductor."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that free electrons move from the negative terminal to the positive terminal around the circuit."
+    },
+    {
+        question: "Q. A newly discovered material exhibits an extremely large specific resistance. Into which category of materials is it most appropriately classified based on this characteristic?",
+        options: [
+            "A superconductor.",
+            "A metallic conductor.",
+            "An insulator.",
+            "A semiconductor."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that insulators have extremely large resistivity (specific resistance)."
+    },
+    {
+        question: "Q. A household appliance consumes energy at a rate of one kilowatt for a duration of one hour. This amount of electrical energy is equivalent to how many Joules?",
+        options: [
+            "One Joule.",
+            "One thousand Joules.",
+            "Three thousand six hundred Joules.",
+            "Three point six million Joules."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that 1 kilowatt-hour (kWh) is equal to 3.6 × 10⁶ Joules. This conversion involves multiplying 1000 Watts by 3600 seconds."
+    },
+    {
+        question: "Q. What is the primary subject matter for the field of current electricity?",
+        options: [
+            "The behavior of stationary charges.",
+            "The dynamics of moving charges.",
+            "The properties of magnetic fields.",
+            "The structure of atomic nuclei."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that current electricity is the study of charges in motion."
+    },
+    {
+        question: "Q. For Ohm's Law to accurately describe the relationship between potential difference and current in a conductor, what specific physical condition must be maintained?",
+        options: [
+            "The conductor's length must be varied.",
+            "The conductor must be exposed to varying magnetic fields.",
+            "The conductor's cross-sectional area must be increased.",
+            "The conductor's temperature must be kept constant."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that Ohm's Law holds provided the temperature of the conductor is kept constant."
+    },
+    {
+        question: "Q. If a material's opposition to current flow is measured in Ohms, what would be the corresponding unit for its capacity to conduct current, and how is it related to the Ohm?",
+        options: [
+            "Ampere; it's the square root of Ohm.",
+            "Volt; it's the inverse of Ohm.",
+            "Mho; it's the reciprocal of Ohm.",
+            "Watt; it's the product of Ohm and Ampere."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that conductance is the reciprocal of resistance, and its SI unit is Mho or Siemen."
+    },
+    {
+        question: "Q. A circuit is designed to deliver power from a source with fixed electromotive force and internal resistance to a variable external load. If the external load's opposition is progressively increased from zero, the power delivered to it initially rises, reaches a peak, and then declines. This behavior signifies that the peak power transfer occurs under what specific condition related to the internal opposition?",
+        options: [
+            "When the external opposition is much larger than the internal opposition.",
+            "When the external opposition is much smaller than the internal opposition.",
+            "When the external opposition is completely disconnected.",
+            "When the external opposition matches the internal opposition."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory describes the Maximum Power Transfer Theorem, stating that maximum power is delivered to the load when the load resistance equals the internal resistance of the source. The observed behavior of power rising to a peak and then declining is characteristic of this condition."
+    },
+    {
+        question: "Q. What is the standard international unit for electromotive force?",
+        options: [
+            "Ampere.",
+            "Ohm.",
+            "Volt.",
+            "Watt."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the SI unit of EMF is Volt."
+    },
+    {
+        question: "Q. A certain material is characterized by a high value of specific resistance. What can be directly inferred about its characteristic measure of electrical flow facilitation?",
+        options: [
+            "Its flow facilitation measure is also high.",
+            "Its flow facilitation measure is unrelated to specific resistance.",
+            "Its flow facilitation measure is zero.",
+            "Its flow facilitation measure is inversely related and thus low."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that conductivity is the reciprocal of resistivity (specific resistance). Therefore, a high resistivity means a low conductivity (flow facilitation measure)."
+    },
+    {
+        question: "Q. Two identical resistive components are subjected to the same external potential difference. One is connected in a manner that maximizes current flow through it, while the other is connected in a way that minimizes current flow for the given potential. How does the rate of energy conversion (power) compare between these two scenarios?",
+        options: [
+            "It is higher in the minimized current scenario.",
+            "It is the same in both scenarios.",
+            "It is higher in the maximized current scenario.",
+            "It depends on the specific type of resistive component."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that power is related to potential difference and current (P = VI). If the potential difference is constant, a higher current flow directly results in a higher rate of energy conversion (power)."
+    },
+    {
+        question: "Q. What electrical device is specifically mentioned for its role in distributing electricity to homes and industries through high-voltage lines?",
+        options: [
+            "Resistors.",
+            "Capacitors.",
+            "Inductors.",
+            "Transformers."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory mentions that electricity is distributed via high-voltage transmission lines and transformers."
+    },
+    {
+        question: "Q. The definition of electromotive force is rooted in the work done per unit of charge. Given this, what fundamental SI units compose the Volt?",
+        options: [
+            "Amperes per second.",
+            "Ohms per meter.",
+            "Joules per Coulomb.",
+            "Watts per Ampere."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that EMF = W/q, and its SI unit is Volt (V), which is Joules/Coulomb."
+    },
+    {
+        question: "Q. Two wires of identical length and cross-sectional area are compared. One is made of copper, and the other of iron. If both are at the same temperature, which intrinsic characteristic of their material primarily dictates that they will offer different levels of opposition to current flow?",
+        options: [
+            "Their density.",
+            "Their specific resistance.",
+            "Their melting point.",
+            "Their thermal conductivity."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that resistance depends on the nature of the material, and this intrinsic property is quantified by specific resistance (resistivity). Even with identical dimensions and temperature, different materials have different specific resistances."
+    },
+    {
+        question: "Q. A battery is initially disconnected from any external circuit. When an external resistor is then connected across its terminals, a measurement reveals that the potential difference across these terminals is now lower than before. This observation primarily indicates the presence of what characteristic within the battery itself?",
+        options: [
+            "An external load resistance that is too high.",
+            "A decrease in the external current drawn from the battery.",
+            "An increase in the battery's electromotive force.",
+            "An inherent internal opposition to current flow."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that when a circuit is open, the terminal voltage equals the EMF. When a load is connected, current flows, and due to the battery's internal resistance, there is a voltage drop, making the terminal voltage V = ε - Ir, which is less than the EMF. The observed lower terminal voltage is a direct indicator of internal resistance."
+    },
+    {
+        question: "Q. For an Ohmic conductor, its opposition to charge flow is considered constant under specific conditions. Which factor, if varied, would directly cause this opposition to cease being constant?",
+        options: [
+            "The applied potential difference.",
+            "The magnitude of the current flowing.",
+            "The ambient temperature.",
+            "The conductor's material type."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that for Ohm's Law (and thus constant resistance for Ohmic materials) to hold, the temperature of the conductor must be kept constant. If temperature varies, resistance changes."
+    },
+    {
+        question: "Q. What precise conditions define one Ohm of electrical resistance?",
+        options: [
+            "When one Ampere of current flows with one Watt of power.",
+            "When one Joule of energy is dissipated per second.",
+            "When one Coulomb of charge passes in one second.",
+            "When a potential difference of one Volt causes one Ampere of current to flow."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states that 1 Ohm is the resistance of a wire if a potential difference of 1 Volt across its ends causes 1 Ampere current to flow through it."
+    },
+    {
+        question: "Q. Consider a semiconductor material. If its temperature is elevated, how will its specific resistance and its ability to conduct current be affected?",
+        options: [
+            "Specific resistance increases, conductivity decreases.",
+            "Specific resistance decreases, conductivity increases.",
+            "Both specific resistance and conductivity remain constant.",
+            "Both specific resistance and conductivity decrease."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that for semiconductors, resistance decreases with an increase in temperature, and they have a negative temperature coefficient of resistance. Since specific resistance is directly proportional to resistance, it will decrease. Conductivity is the reciprocal of specific resistance, so it will increase."
+    },
+    {
+        question: "Q. A power source has a fixed internal opposition to current flow. If the external load's opposition is made significantly larger than this internal opposition, what can be inferred about the power delivered to the external load compared to the maximum possible power it could receive?",
+        options: [
+            "The delivered power will be precisely at its maximum.",
+            "The delivered power will be minimal, approaching zero.",
+            "The delivered power will be less than the maximum possible power.",
+            "The delivered power will exceed the maximum possible power."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that maximum power is delivered when the load resistance equals the internal resistance. It also states that power delivered is minimum if load resistance is less than or greater than internal resistance. Therefore, if the external load is significantly larger, the power delivered will be less than the maximum possible power."
+    },
+    {
+        question: "Q. Which type of electromotive force source operates by converting heat energy directly into electrical energy?",
+        options: [
+            "Electrical generators.",
+            "Solar cells.",
+            "Batteries.",
+            "Thermocouples."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory lists thermocouples as converting heat energy to electrical energy."
+    },
+    {
+        question: "Q. In a conductor influenced by an electric field, what is the direction of the net velocity with which free electrons move, relative to the applied electric field?",
+        options: [
+            "Parallel to the electric field.",
+            "Perpendicular to the electric field.",
+            "Opposite to the electric field.",
+            "At an angle of forty-five degrees to the electric field."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that drift velocity is always opposite to the direction of the electric field."
+    },
+    {
+        question: "Q. If an electric current flows through a device for a certain duration, performing a specific amount of work, how does the rate at which this work is performed relate to the total work done and the time elapsed?",
+        options: [
+            "The rate is directly proportional to the total work done and inversely proportional to the time.",
+            "The rate is directly proportional to both the total work done and the time.",
+            "The rate is inversely proportional to both the total work done and the time.",
+            "The rate is independent of both the total work done and the time."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory defines power as the rate at which work is done (P = W/t). This implies power is directly proportional to work done and inversely proportional to time."
+    },
+    {
+        question: "Q. For a material that strictly obeys Ohm's Law, if a graph is plotted with current on the vertical axis and potential difference on the horizontal axis, what does the constant value represented by the slope of this graph signify in terms of electrical properties?",
+        options: [
+            "The material's specific resistance.",
+            "The reciprocal of the material's opposition to current flow.",
+            "The total power dissipated by the material.",
+            "The rate of change of temperature with current."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that for Ohmic materials, the I-V graph is a straight line passing through the origin, and its slope (I/V) is constant and equals 1/R. The reciprocal of R represents the reciprocal of the opposition to current flow, also known as conductance."
+    },
+    {
+        question: "Q. Which of the following units represents a submultiple of the Ampere?",
+        options: [
+            "Kilowatt.",
+            "Joule.",
+            "Megawatt.",
+            "Milliampere."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory lists milliampere (mA = 10⁻³ A) and microampere (μA = 10⁻⁶ A) as submultiples of the Ampere."
+    },
+    {
+        question: "Q. The fundamental mechanism by which a substance offers opposition to the flow of free electrons primarily involves what interaction within the material?",
+        options: [
+            "Magnetic repulsion between electrons.",
+            "Gravitational attraction between electrons and nuclei.",
+            "Collisions between flowing electrons and the substance's atoms or molecules.",
+            "Chemical reactions occurring within the substance."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that resistance is due to atoms and molecules of the substance obstructing electron flow, leading to collisions and liberation of heat."
+    },
+    {
+        question: "Q. Consider a uniform conductor of fixed material and cross-sectional area. If its length is reduced to one-third of its original value, how does its electrical opposition to charge flow change?",
+        options: [
+            "It triples.",
+            "It becomes one-third.",
+            "It remains the same.",
+            "It becomes nine times greater."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that resistance is directly proportional to the length of the conductor. Therefore, if the length is reduced to one-third, the resistance also becomes one-third."
+    },
+    {
+        question: "Q. What specific type of energy transformation is characteristic of an electrical generator operating as a source of electromotive force?",
+        options: [
+            "Conversion of chemical potential to electrical potential.",
+            "Conversion of radiant energy to directed electrical flow.",
+            "Conversion of kinetic motion to electrical energy.",
+            "Conversion of thermal gradients to electrical potential."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that electrical generators convert mechanical energy to electrical energy. Kinetic motion is a form of mechanical energy, making this option the most appropriate description among the choices for the energy transformation process."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Physics ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-PHY-02';
+let quizData = quizData_WCW_PHY_02;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-PHY-02', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-PHY-02', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-PHY-02', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_PHY_02;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_PHY_02;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_PHY_02[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_PHY_02.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
